@@ -6,4 +6,4 @@ RewriteCond %{HTTP_HOST} (www\.)?hiukong-dan.com
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:hiukong-dan.com
 
-DirectoryIndex index.html
+DirectoryIndex site/index.html
