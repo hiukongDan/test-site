@@ -18,9 +18,7 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-	this.load.path = './';
-	
-	console.debug(this.load.baseURL)
+	this.load.setBaseURL("https://hiukong-dan.com/game-phaser")
 
 	this.load.image('cactus', 'assets/cactuses_big_1.png');
 	this.load.image('dino', 'assets/dino-idle.png');
