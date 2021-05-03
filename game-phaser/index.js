@@ -20,7 +20,7 @@ function preload ()
 {
 	this.load.crossOrigin = "anonymous";
 	
-	this.load.setBaseURL("https://hiukong-dan.com/game-phaser");
+	this.load.path = "./"
 
 	this.load.image('cactus', 'assets/cactuses_big_1.png');
 	this.load.image('dino', 'assets/dino-idle.png');
