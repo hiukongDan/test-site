@@ -18,12 +18,14 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-	this.load.setBaseURL("https://hiukong-dan.com/game-phaser")
+	this.load.crossOrigin = "anonymous";
+	
+	this.load.setBaseURL("https://hiukong-dan.com/game-phaser");
 
 	this.load.image('cactus', 'assets/cactuses_big_1.png');
 	this.load.image('dino', 'assets/dino-idle.png');
 	this.load.image('cloud', 'assets/cloud.png');
-	
+
 	this.scale.autoCenter = Phaser.Scale.CENTER_HORIZONTALLY;
 }
 
