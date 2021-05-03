@@ -8,19 +8,22 @@ var config = {
                 gravity: { y: 200 }
             }
         },
+		
         scene: {
             preload: preload,
-            create: create
+            create: create,
+			update: update
         }
     };
 
 var game = new Phaser.Game(config);
 
-function preload ()
+
+function preload()
 {
 	this.load.crossOrigin = "anonymous";
 	
-	this.load.path = "./"
+	this.load.path = "./";
 
 	this.load.image('cactus', 'assets/cactuses_big_1.png');
 	this.load.image('dino', 'assets/dino-idle.png');
@@ -29,7 +32,7 @@ function preload ()
 	this.scale.autoCenter = Phaser.Scale.CENTER_HORIZONTALLY;
 }
 
-function create ()
+function create()
 {
 	this.add.image(400, 300, 'cactus');
 
@@ -41,11 +44,34 @@ function create ()
 		blendMode: 'ADD'
 	});
 
-	var dino = this.physics.add.image(400, 100, 'dino');
+	this.dino = this.physics.add.image(400, 100, 'dino');
 
-	dino.setVelocity(100, 200);
-	dino.setBounce(1, 1);
-	dino.setCollideWorldBounds(true);
+	this.dino.setVelocity(100, 200);
+	this.dino.setBounce(1, 1);
+	this.dino.setCollideWorldBounds(true);
 
-	emitter.startFollow(dino);
+	emitter.startFollow(this.dino);
+	
+	this.acceleration = 1;
+	this.terminalSpeed = [100, 300];
+	this.accDirection = 1;
+}
+
+function update(time, delta)
+{
+	var vel = this.dino.body.velocity;
+	
+	if(vel.x > this.terminalSpeed[1]){
+		this.accDirection = -1;
+	}
+	else if(vel.x < this.terminalSpeed[0]){
+		this.accDirection = 1;
+	}
+	var increment =  delta * this.acceleration * this.accDirection;
+	vel.x += (vel.x>0?1:-1)*increment;
+	vel.y += (vel.y>0?1:-1)*increment*2;
+	
+	this.dino.setVelocity(vel.x, vel.y);
+	
+	//console.debug(this.dino.body.velocity);
 }
