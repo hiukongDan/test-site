@@ -1,9 +1,13 @@
 footer{
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	padding: 10px;
 	color: white;
 	background-color: #302f2b;
+	text-align:center;
+}
+
+.text-center{
 	text-align:center;
 }
