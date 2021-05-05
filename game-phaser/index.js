@@ -72,6 +72,4 @@ function update(time, delta)
 	vel.y += (vel.y>0?1:-1)*increment*2;
 	
 	this.dino.setVelocity(vel.x, vel.y);
-	
-	//console.debug(this.dino.body.velocity);
 }
